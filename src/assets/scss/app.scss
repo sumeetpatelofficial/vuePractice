@@ -1,0 +1,59 @@
+//@import 'scss/bootstrap.scss';
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return $remSize * 1rem;
+  }
+  
+  @mixin font-size($size) {
+    font-size: $size;
+    font-size: calculateRem($size);
+  }
+  
+  $primary: #3D68F2;
+  $secondary: #373737;
+  $c1: #BCBCBC;
+  $c2: #ff0381;
+  $c3: $primary;
+  $c4: #001833;
+  $c5: #F2F2F2;
+  $c6: #454545;
+  $c7: #79DA5A;
+  $c8: #ff5b71;
+  $white: #fff;
+  $black: #000000;
+  $bodyColor:#F5F9FF;
+  $navlink:#BEDACF;
+  $red:#ff0000;
+  $leftSidebar:#001833;
+  
+  $digit1: 5px;
+  $digit2: 10px;
+  $digit3: 15px;
+  $digit4: 20px;
+  $digit5: 25px;
+  $digit6: 30px;
+  $digit7: 35px;
+  $digit8: 40px;
+  $digit9: 45px;
+  $digit10: 50px;
+  $digit11: 55px;
+  $digit12: 60px;
+  $digit13: 65px;
+  $digit14: 70px;
+  $digit15: 75px;
+  $digit16: 80px;
+  $digit17: 85px;
+  $digit18: 90px;
+  $digit19: 95px;
+  $digit20: 100px;
+  
+  $w100p: 100%;
+
+html,body{
+    height: 100%;
+}
+body{
+    font-family: 'Roboto', sans-serif;
+    background: $bodyColor;
+}
