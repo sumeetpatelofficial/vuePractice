@@ -1,59 +1,75 @@
-//@import 'scss/bootstrap.scss';
+@import 'variables';
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap-vue/src/index.scss";
 
-@function calculateRem($size) {
-    $remSize: $size / 16px;
-    @return $remSize * 1rem;
+
+:root
+{
+  overflow: auto;
+  scrollbar-color: #aaa transparent;
+  scrollbar-width: thin;
+  scroll-behavior: smooth;
+
+  // chrome
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
   }
-  
-  @mixin font-size($size) {
-    font-size: $size;
-    font-size: calculateRem($size);
+
+  &::-webkit-scrollbar-thumb {
+    width: 6px;
+    height: 6px;
+    border-radius: 13px;
+    background-clip: padding-box;
+    border: 6px solid #aaa;
+    background-color: #aaa;
   }
-  
-  $primary: #3D68F2;
-  $secondary: #373737;
-  $c1: #BCBCBC;
-  $c2: #ff0381;
-  $c3: $primary;
-  $c4: #001833;
-  $c5: #F2F2F2;
-  $c6: #454545;
-  $c7: #79DA5A;
-  $c8: #ff5b71;
-  $white: #fff;
-  $black: #000000;
-  $bodyColor:#F5F9FF;
-  $navlink:#BEDACF;
-  $red:#ff0000;
-  $leftSidebar:#001833;
-  
-  $digit1: 5px;
-  $digit2: 10px;
-  $digit3: 15px;
-  $digit4: 20px;
-  $digit5: 25px;
-  $digit6: 30px;
-  $digit7: 35px;
-  $digit8: 40px;
-  $digit9: 45px;
-  $digit10: 50px;
-  $digit11: 55px;
-  $digit12: 60px;
-  $digit13: 65px;
-  $digit14: 70px;
-  $digit15: 75px;
-  $digit16: 80px;
-  $digit17: 85px;
-  $digit18: 90px;
-  $digit19: 95px;
-  $digit20: 100px;
-  
-  $w100p: 100%;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 13px;
+    background-color: transparent;
+    border: 6px solid transparent;
+    background-clip: padding-box;
+  }
+}
+
+:root.light{
+  --bg-theme:#ffffff;
+  --bg-color:#f6f6f6;
+  --text-color:#222222;
+  --duration: 0.5s;
+  --timing: ease; 
+  --btn-background:var(--primary);
+  --btn-text:var(--white); 
+}
+
+:root.dark{
+  --bg-theme:#3C415C;
+  --bg-color:#040303;
+  --text-color:#ffffff;
+  --duration: 0.5s;
+  --timing: ease;  
+  --btn-background:var(--pink);
+  --btn-text:var(--white);  
+}
 
 html,body{
     height: 100%;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition:color var(--duration) var(--timing), background-color var(--duration) var(--timing);  
 }
 body{
-    font-family: 'Roboto', sans-serif;
-    background: $bodyColor;
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-color);
+}
+
+.list-group-item{
+  background: var(--bg-theme);
+  color: var(--text-color);
+}
+
+.btn-primary{
+  background-color: var(--btn-background);  
+  color: var(--btn-text);
 }

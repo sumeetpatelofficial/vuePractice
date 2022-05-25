@@ -5,7 +5,8 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user:[]
+    user:[],
+    currentTheme:false
   },
   mutations: {
     mutationFunction(state: any, payload){
@@ -16,6 +17,9 @@ export default new Vuex.Store({
       // console.log(state.checked[index])
       //vue,set(object, index, newValue)
       Vue.set(state.user, state.user[index], !state.user[index].checked)
+    },
+    changedThemeMutation(state:any, value){
+      state.currentTheme = value
     }
   },
   actions: {
@@ -25,7 +29,13 @@ export default new Vuex.Store({
     },
     changeStatus({commit}, payload){
       commit('changeStatus', payload)
+    },
+    changedTheme({commit}, payload){
+      commit('changedThemeMutation', payload)
     }
+  },
+  getters: {
+    currentTheme: (state: any) => state.currentTheme,
   },
   modules: {},
 });
