@@ -2,7 +2,7 @@
     <div class="contact-card">
         <div class="contact-card-image">
             <div class="content">
-                <!-- <img src="" alt="" srcset=""> -->
+                <img :src="'https://i.pravatar.cc/512'" alt="" srcset="">
             </div>
         </div>
         <div class="contact-card-detail">
@@ -33,12 +33,13 @@
         border-radius: 15px;
         display: flex;
         flex-direction: row;
-        padding: 25px 0;
+        flex-wrap: wrap;
+        padding: 15px 0;
         align-items: center;
         box-shadow:
-        0 20px 15px rgba(0, 0, 0, 0.03),
-        0 40px 30px rgba(0, 0, 0, 0.04),
-        0 100px 80px rgba(0, 0, 0, 0.05);
+        0 20px 15px rgba(0, 0, 0, 0.02),
+        0 30px 30px rgba(0, 0, 0, 0.03),
+        0 50px 50px rgba(0, 0, 0, 0.04);        
         &-image{
             position: relative;
             width: 80px;

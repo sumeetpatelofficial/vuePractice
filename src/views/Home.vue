@@ -43,6 +43,7 @@
     </div>
 
     <div class="container">
+      <h5 class="user-type">Suggestion Invitations</h5>
       <div class="row">
         <div class="col-6">
           <contact-card />

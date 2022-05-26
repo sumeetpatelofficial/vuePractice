@@ -36,7 +36,7 @@
 
 :root.light{
   --bg-theme:#ffffff;
-  --bg-color:#f6f6f6;
+  --bg-color:#FAFCFD;
   --text-color:#222222;
   --duration: 0.5s;
   --timing: ease; 
@@ -73,4 +73,43 @@ body{
 .btn-primary{
   background-color: var(--btn-background);  
   color: var(--btn-text);
+}
+
+.user-type{
+  position: relative;
+  color: #9b9b9b;
+  margin-bottom: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      transition: all ease-in-out 0.3s;
+    }
+  }
+}
+
+.contact-card{
+  &-image{
+    @include aspect-ratio(1, 1); 
+    overflow: hidden;   
+  }
 }
