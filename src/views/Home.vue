@@ -1,10 +1,12 @@
 <template>
   <div class="home">    
     <!-- <Header></Header> -->
-    <b-navbar toggleable="sm" type="light" variant="light" style="border-bottom:1px solid #efefef;">
+    <b-navbar toggleable="sm" :type="themeMode? 'dark':'light'" :variant="themeMode? 'dark':'light'">
       <div class="container">
         <b-navbar-brand href="#">NavBar</b-navbar-brand>
-        <b-form-checkbox switch size="sm" v-model="themeMode">Dark Mode</b-form-checkbox>
+        <b-form-checkbox switch size="sm"
+        @change="changeThemeMode"
+        v-model="themeMode">{{themeMode ? 'Dark Mode':'Light Mode'}}</b-form-checkbox>
       </div>
     </b-navbar>  
     <div class="container py-5">
@@ -38,6 +40,15 @@
           <b-list-group-item>No Users Found !!</b-list-group-item>
         </template>
       </b-list-group>
+    </div>
+
+    <div class="container">
+      <h5 class="user-type">Suggestion Invitations</h5>
+      <div class="row">
+        <div class="col-6">
+          <contact-card />
+        </div>
+      </div>      
     </div>
 
     <b-modal centered size="lg" id="modal-1" @ok="saveUser()" title="Add New User">
@@ -82,13 +93,15 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import contactCard from "@/components/child/contactCard.vue"
 @Component({
   components: {
+    contactCard
   },
 })
 export default class Home extends Vue {
   users:any=[];
-  themeMode:any=false;
+  themeMode:any=this.$store.state.currentTheme;
   user:any={
     email:'',
     name:'',
@@ -100,6 +113,7 @@ export default class Home extends Vue {
 
   mounted(){
     this.users = this.$store.state.user;
+    document.documentElement.className = this.themeMode ? 'dark':'light';
   }
 
   saveUser(){
@@ -109,6 +123,11 @@ export default class Home extends Vue {
 
   changeChecked(index:any){
     this.$store.dispatch('changeStatus',index);
+  }
+
+  changeThemeMode(e:any){  
+    document.documentElement.className = e ? 'dark':'light';
+    this.$store.dispatch('changedTheme', e)
   }
 
 }
