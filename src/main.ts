@@ -8,6 +8,7 @@ import BootstrapVue from 'bootstrap-vue';
 // import 'bootstrap/scss/bootstrap.scss'
 // import 'bootstrap-vue/dist/bootstrap-vue.css'
 import '@/assets/scss/app.scss';
+import 'material-icons/iconfont/material-icons.css';
 
 Vue.use(BootstrapVue)
 Vue.config.productionTip = false;

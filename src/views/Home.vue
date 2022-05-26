@@ -42,6 +42,14 @@
       </b-list-group>
     </div>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-6">
+          <contact-card />
+        </div>
+      </div>      
+    </div>
+
     <b-modal centered size="lg" id="modal-1" @ok="saveUser()" title="Add New User">
       <b-form-group
         id="input-group-1"
@@ -84,8 +92,10 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import contactCard from "@/components/child/contactCard.vue"
 @Component({
   components: {
+    contactCard
   },
 })
 export default class Home extends Vue {

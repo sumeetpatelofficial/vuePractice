@@ -1,0 +1,17 @@
+.conatct-card{
+    position: relative;
+    background: #ffffff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    padding: 15px 0;
+    &-image{
+        position: relative;
+        display: block;
+        width: 80px;
+        height: 80px;
+        background: #f2f2f2;
+        border-radius: 50%;
+        padding: 0 15px;
+    }
+}
