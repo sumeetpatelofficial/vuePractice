@@ -51,7 +51,8 @@
       </div>      
     </div>
 
-    <b-modal centered size="lg" id="modal-1" @ok="saveUser()" title="Add New User">
+    <b-modal centered size="lg" id="modal-1" title="Add New User" hide-footer>
+      <form @submit="saveUser()">
       <b-form-group
         id="input-group-1"
         label="Email address:"
@@ -86,6 +87,8 @@
       <b-form-group id="input-group-4">
         <b-form-checkbox v-model="user.checked">Active</b-form-checkbox>
       </b-form-group>
+      <b-button variant="primary">Submit</b-button>
+      </form>
     </b-modal>
 
   </div>
@@ -93,7 +96,8 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import contactCard from "@/components/child/contactCard.vue"
+import contactCard from "@/components/child/contactCard.vue";
+import sample from "@/sample"
 @Component({
   components: {
     contactCard
@@ -114,7 +118,8 @@ export default class Home extends Vue {
   mounted(){
     this.users = this.$store.state.user;
     document.documentElement.className = this.themeMode ? 'dark':'light';
-  }
+    // sample.masrat();
+  } 
 
   saveUser(){
     this.$store.dispatch('addNewUser',this.user);
