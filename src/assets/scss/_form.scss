@@ -1,0 +1,29 @@
+.form-group{
+    label{
+        color: #5B5D72;
+        font-size: 14px;
+        letter-spacing: 0.3px;
+        margin-bottom: 5px;
+    }
+}
+
+@mixin placeholder {
+    &::-webkit-input-placeholder {@content};
+    &:-moz-placeholder           {@content};
+    &::-moz-placeholder          {@content};
+    &:-ms-input-placeholder      {@content} 
+}
+
+.form-control{
+    border-color: #D9DEE4;
+    border-width:0.115rem;
+    height:calc(1.8em + 0.75rem + 5px);
+    @include placeholder{
+        font-size: 14px;
+        color: #8B93A0;
+    }
+    &:focus, &:visited{
+        box-shadow: unset;
+        border-color: #cacdd1;
+    }
+}

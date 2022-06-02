@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import 'variables';
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-vue/src/index.scss";
-// @import "contactcard";
+@import "contactcard";
+@import "form";
 
 :root
 {
@@ -61,7 +62,7 @@ html,body{
     transition:color var(--duration) var(--timing), background-color var(--duration) var(--timing);  
 }
 body{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Rubik', sans-serif;
   color: var(--text-color);
 }
 

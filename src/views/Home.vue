@@ -52,42 +52,42 @@
     </div>
 
     <b-modal centered size="lg" id="modal-1" title="Add New User" hide-footer>
-      <form @submit="saveUser()">
-      <b-form-group
-        id="input-group-1"
-        label="Email address:"
-        label-for="input-1"
-        description="We'll never share your email with anyone else."
-      >
-        <b-form-input
-          id="input-1"
-          v-model="user.email"
-          type="email"
-          placeholder="Enter email"
-        ></b-form-input>
-      </b-form-group>
+      <form @submit.prevent.stop="saveUser">
+        <b-form-group
+          id="input-group-1"
+          label="Email address:"
+          label-for="input-1"
+          description="We'll never share your email with anyone else."
+        >
+          <b-form-input
+            id="input-1"
+            v-model="user.email"
+            type="email"
+            placeholder="Enter email"
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="user.name"
-          placeholder="Enter name"
-        ></b-form-input>
-      </b-form-group>
+        <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
+          <b-form-input
+            id="input-2"
+            v-model="user.name"
+            placeholder="Enter name"
+          ></b-form-input>
+        </b-form-group>
 
-      <b-form-group id="input-group-3" label="Favorite Food:" label-for="input-3">
-        <b-form-select
-          id="input-3"
-          v-model="user.food"
-          :options="foods"
-          class="form-control"
-        ></b-form-select>
-      </b-form-group>
+        <b-form-group id="input-group-3" label="Favorite Food:" label-for="input-3">
+          <b-form-select
+            id="input-3"
+            v-model="user.food"
+            :options="foods"
+            class="form-control"
+          ></b-form-select>
+        </b-form-group>
 
-      <b-form-group id="input-group-4">
-        <b-form-checkbox v-model="user.checked">Active</b-form-checkbox>
-      </b-form-group>
-      <b-button variant="primary">Submit</b-button>
+        <b-form-group id="input-group-4">
+          <b-form-checkbox v-model="user.checked">Active</b-form-checkbox>
+        </b-form-group>
+        <b-button type="submit" variant="primary">Submit</b-button>
       </form>
     </b-modal>
 
@@ -118,7 +118,7 @@ export default class Home extends Vue {
   mounted(){
     this.users = this.$store.state.user;
     document.documentElement.className = this.themeMode ? 'dark':'light';
-    // sample.masrat();
+    sample.masrat();
   } 
 
   saveUser(){
@@ -138,7 +138,7 @@ export default class Home extends Vue {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .form-group{
     margin-bottom: 20px;
   }
