@@ -52,43 +52,7 @@
     </div>
 
     <b-modal centered size="lg" id="modal-1" title="Add New User" hide-footer>
-      <form @submit.prevent.stop="saveUser">
-        <b-form-group
-          id="input-group-1"
-          label="Email address:"
-          label-for="input-1"
-          description="We'll never share your email with anyone else."
-        >
-          <b-form-input
-            id="input-1"
-            v-model="user.email"
-            type="email"
-            placeholder="Enter email"
-          ></b-form-input>
-        </b-form-group>
-
-        <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-          <b-form-input
-            id="input-2"
-            v-model="user.name"
-            placeholder="Enter name"
-          ></b-form-input>
-        </b-form-group>
-
-        <b-form-group id="input-group-3" label="Favorite Food:" label-for="input-3">
-          <b-form-select
-            id="input-3"
-            v-model="user.food"
-            :options="foods"
-            class="form-control"
-          ></b-form-select>
-        </b-form-group>
-
-        <b-form-group id="input-group-4">
-          <b-form-checkbox v-model="user.checked">Active</b-form-checkbox>
-        </b-form-group>
-        <b-button type="submit" variant="primary">Submit</b-button>
-      </form>
+      
     </b-modal>
 
   </div>
@@ -97,38 +61,19 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import contactCard from "@/components/child/contactCard.vue";
-import sample from "@/sample"
+import personalInformation from "@/components/personalInformation.vue";
 @Component({
   components: {
-    contactCard
+    contactCard,
+    personalInformation
   },
 })
-export default class Home extends Vue {
-  users:any=[];
-  themeMode:any=this.$store.state.currentTheme;
-  user:any={
-    email:'',
-    name:'',
-    food:null,
-    checked:false,
-  }
-
-  foods:any= [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn']
+export default class Home extends Vue {  
+  themeMode:any=this.$store.state.currentTheme;  
 
   mounted(){
-    this.users = this.$store.state.user;
     document.documentElement.className = this.themeMode ? 'dark':'light';
-    sample.masrat();
-  } 
-
-  saveUser(){
-    this.$store.dispatch('addNewUser',this.user);
-    this.users = this.$store.state.user;
-  }
-
-  changeChecked(index:any){
-    this.$store.dispatch('changeStatus',index);
-  }
+  }   
 
   changeThemeMode(e:any){  
     document.documentElement.className = e ? 'dark':'light';
