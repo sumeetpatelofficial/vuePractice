@@ -1,13 +1,47 @@
 <template>
-  <div class="home">    
-    <!-- <Header></Header> -->
-    <b-navbar toggleable="sm" type="light" variant="light" style="border-bottom:1px solid #efefef;">
-      <div class="container">
-        <b-navbar-brand href="#">NavBar</b-navbar-brand>
-        <b-form-checkbox switch size="sm" v-model="themeMode">Dark Mode</b-form-checkbox>
+  <div>   
+    <b-container>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="#foo" active>Personal Information</b-breadcrumb-item>
+      </b-breadcrumb>
+    </b-container>
+
+    <b-container>
+      <div class="form-div">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="heading-section">
+              <div class="heading-icon">
+                <img :src="profileIcon" alt="" srcset="">
+              </div>
+              <h5>Personal Information</h5>
+            </div>
+
+            <PersonaIInformation />
+          </div>
+          <div class="offset-md-1 col-md-4">
+            <div class="card card-light-gray mb-5">
+              <div class="card-body">
+                <h5 class="mb-3">Hi there, welcome here</h5>
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden">
+              <img :src="userImage" alt="" srcset="">
+              <div class="card-body">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <b-button class="light-info mt-5" block>Upload a Photo</b-button>
+              </div>
+            </div>
+          </div>
+        </div>      
       </div>
-    </b-navbar>  
-    <div class="container py-5">
+    </b-container>
+
+
+
+    <!-- <div class="container py-5">
       <b-button v-b-modal.modal-1 variant="primary" class="mb-3">New Use</b-button>
       <b-list-group>
         <template v-if="users.length">
@@ -40,82 +74,27 @@
       </b-list-group>
     </div>
 
-    <b-modal centered size="lg" id="modal-1" @ok="saveUser()" title="Add New User">
-      <b-form-group
-        id="input-group-1"
-        label="Email address:"
-        label-for="input-1"
-        description="We'll never share your email with anyone else."
-      >
-        <b-form-input
-          id="input-1"
-          v-model="user.email"
-          type="email"
-          placeholder="Enter email"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="user.name"
-          placeholder="Enter name"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group id="input-group-3" label="Favorite Food:" label-for="input-3">
-        <b-form-select
-          id="input-3"
-          v-model="user.food"
-          :options="foods"
-          class="form-control"
-        ></b-form-select>
-      </b-form-group>
-
-      <b-form-group id="input-group-4">
-        <b-form-checkbox v-model="user.checked">Active</b-form-checkbox>
-      </b-form-group>
-    </b-modal>
-
+    <div class="container">
+      <h5 class="user-type">Suggestion Invitations</h5>
+      <div class="row">
+        <div class="col-6">
+          <contact-card />
+        </div>
+      </div>      
+    </div> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
+import PersonaIInformation from "@/components/personaIInformation.vue";
 @Component({
-  components: {
-  },
+  components:{
+    PersonaIInformation
+  }
 })
-export default class Home extends Vue {
-  users:any=[];
-  themeMode:any=false;
-  user:any={
-    email:'',
-    name:'',
-    food:null,
-    checked:false,
-  }
-
-  foods:any= [{ text: 'Select One', value: null }, 'Carrots', 'Beans', 'Tomatoes', 'Corn']
-
-  mounted(){
-    this.users = this.$store.state.user;
-  }
-
-  saveUser(){
-    this.$store.dispatch('addNewUser',this.user);
-    this.users = this.$store.state.user;
-  }
-
-  changeChecked(index:any){
-    this.$store.dispatch('changeStatus',index);
-  }
-
+export default class Home extends Vue {    
+  profileIcon:any=require("@/assets/images/profile.svg")
+  userImage:any=require("@/assets/images/userimage.jpg")
 }
 </script>
-
-<style scoped>
-  .form-group{
-    margin-bottom: 20px;
-  }
-</style>
