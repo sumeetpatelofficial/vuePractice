@@ -1,15 +1,47 @@
 <template>
-  <div class="home">    
-    <!-- <Header></Header> -->
-    <b-navbar toggleable="sm" :type="themeMode? 'dark':'light'" :variant="themeMode? 'dark':'light'">
-      <div class="container">
-        <b-navbar-brand href="#">NavBar</b-navbar-brand>
-        <b-form-checkbox switch size="sm"
-        @change="changeThemeMode"
-        v-model="themeMode">{{themeMode ? 'Dark Mode':'Light Mode'}}</b-form-checkbox>
+  <div>   
+    <b-container>
+      <b-breadcrumb>
+        <b-breadcrumb-item href="#foo" active>Personal Information</b-breadcrumb-item>
+      </b-breadcrumb>
+    </b-container>
+
+    <b-container>
+      <div class="form-div">
+        <div class="row">
+          <div class="col-md-7">
+            <div class="heading-section">
+              <div class="heading-icon">
+                <img :src="profileIcon" alt="" srcset="">
+              </div>
+              <h5>Personal Information</h5>
+            </div>
+
+            <PersonaIInformation />
+          </div>
+          <div class="offset-md-1 col-md-4">
+            <div class="card card-light-gray mb-5">
+              <div class="card-body">
+                <h5 class="mb-3">Hi there, welcome here</h5>
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+              </div>
+            </div>
+
+            <div class="card overflow-hidden">
+              <img :src="userImage" alt="" srcset="">
+              <div class="card-body">
+                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <b-button class="light-info mt-5" block>Upload a Photo</b-button>
+              </div>
+            </div>
+          </div>
+        </div>      
       </div>
-    </b-navbar>  
-    <div class="container py-5">
+    </b-container>
+
+
+
+    <!-- <div class="container py-5">
       <b-button v-b-modal.modal-1 variant="primary" class="mb-3">New Use</b-button>
       <b-list-group>
         <template v-if="users.length">
@@ -49,42 +81,20 @@
           <contact-card />
         </div>
       </div>      
-    </div>
-
-    <b-modal centered size="lg" id="modal-1" title="Add New User" hide-footer>
-      
-    </b-modal>
-
+    </div> -->
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import contactCard from "@/components/child/contactCard.vue";
-import personalInformation from "@/components/personalInformation.vue";
+import PersonaIInformation from "@/components/personaIInformation.vue";
 @Component({
-  components: {
-    contactCard,
-    personalInformation
-  },
-})
-export default class Home extends Vue {  
-  themeMode:any=this.$store.state.currentTheme;  
-
-  mounted(){
-    document.documentElement.className = this.themeMode ? 'dark':'light';
-  }   
-
-  changeThemeMode(e:any){  
-    document.documentElement.className = e ? 'dark':'light';
-    this.$store.dispatch('changedTheme', e)
+  components:{
+    PersonaIInformation
   }
-
+})
+export default class Home extends Vue {    
+  profileIcon:any=require("@/assets/images/profile.svg")
+  userImage:any=require("@/assets/images/userimage.jpg")
 }
 </script>
-
-<style scoped lang="scss">
-  .form-group{
-    margin-bottom: 20px;
-  }
-</style>

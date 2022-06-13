@@ -24,48 +24,70 @@
             ></b-form-input>
           </div>
         </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Email Address</label>
+            <b-form-input
+              id="input-2"
+              v-model="user.email"
+              placeholder="Enter Email"
+            ></b-form-input>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="">Phone Number</label>
+            <b-form-input
+              id="input-2"
+              v-model="user.contact"
+              placeholder="+1 123 456 7890"
+            ></b-form-input>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="">Gender</label>
+            <b-form-radio-group v-model="user.gender" class="button-radio">
+              <b-form-radio v-for="gender, g in ['Male', 'Female', 'Others']" :key="g" :value="gender">{{gender}}</b-form-radio>
+            </b-form-radio-group>
+          </div>
+        </div>
+
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="">Password</label>            
+            <password v-model="user.password" :default-class="'form-control'" :toggle="true" :badge="false" :secure-length="9" />
+          </div>
+        </div>
       </div>
 
-      <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-        <b-form-input
-          id="input-2"
-          v-model="user.name"
-          placeholder="Enter name"
-        ></b-form-input>
-      </b-form-group>
-
-      <b-form-group
-        id="input-group-3"
-        label="Favorite Food:"
-        label-for="input-3"
-      >
-        <b-form-select
-          id="input-3"
-          v-model="user.food"
-          :options="foods"
-          class="form-control"
-        ></b-form-select>
-      </b-form-group>
-
-      <b-form-group id="input-group-4">
-        <b-form-checkbox v-model="user.checked">Active</b-form-checkbox>
-      </b-form-group>
-      <b-button type="submit" variant="primary">Submit</b-button>
+      <div class="mt-5">
+        <b-button variant="success">continue to address</b-button>
+        <b-link class="text-light-gray ml-5">skip for now</b-link>
+      </div>
     </form>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
-@Component
-export default class personalInformation extends Vue {
+import Password from 'vue-password-strength-meter'
+@Component({
+  components:{
+    Password
+  }
+})
+export default class personaIInformation extends Vue {
   users: any = [];
   user: any = {
+    firstName:"",
+    lastName:"",
     email: "",
-    name: "",
-    food: null,
-    checked: false,
+    contact: "",
+    gender: "Male",
+    isActive: true,
+    type:"user",
+    password:"",
   };
 
   foods: any = [

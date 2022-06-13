@@ -10,6 +10,11 @@ const routes: Array<RouteConfig> = [
     name: "Home",
     component: Home,
   },
+  {
+    path: "/js",
+    name: "js",
+    component:() => import('@/views/jsPractice.vue'),
+  },
 ];
 
 const router = new VueRouter({
