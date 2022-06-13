@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import 'variables';
+@import 'mixin';
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-vue/src/index.scss";
+@import "header";
+@import "breadscrumb";
 @import "contactcard";
 @import "form";
 
@@ -36,8 +39,8 @@
 }
 
 :root.light{
-  --bg-theme:#ffffff;
-  --bg-color:#FAFCFD;
+  --bg-theme:$white;
+  --bg-color:$white;
   --text-color:#222222;
   --duration: 0.5s;
   --timing: ease; 
@@ -47,7 +50,7 @@
 
 :root.dark{
   --bg-theme:#3C415C;
-  --bg-color:#040303;
+  --bg-color:#1A2029;
   --text-color:#ffffff;
   --duration: 0.5s;
   --timing: ease;  
@@ -66,14 +69,28 @@ body{
   color: var(--text-color);
 }
 
+a{
+  text-decoration: none;
+  &:hover, &:focus{
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  color: $lable;
+}
+
+.page-area{
+  padding-top: 50px;
+}
+
 .list-group-item{
   background: var(--bg-theme);
   color: var(--text-color);
 }
 
-.btn-primary{
-  background-color: var(--btn-background);  
-  color: var(--btn-text);
+.btn{
+  padding: 0.75rem 1.5rem;
 }
 
 .user-type{
@@ -85,32 +102,46 @@ body{
   letter-spacing: 0.5px;
 }
 
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-      transition: all ease-in-out 0.3s;
-    }
-  }
-}
-
 .contact-card{
   &-image{
     @include aspect-ratio(1, 1); 
     overflow: hidden;   
+  }
+}
+
+.form-div{
+  padding: 50px 0;
+}
+
+.heading-section{
+  position: relative;
+  margin-bottom: 50px;
+  .heading-icon{
+    position: relative;
+    margin-bottom: 20px;
+    img{
+      width: 40px;
+    }
+  }
+  h5{
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    font-weight: 400;
+    @include font-size(22px);
+  }
+}
+
+.card-light-gray{
+  border: unset;
+  background-color: rgba($color: $breadscrumb, $alpha: 0.15);
+}
+
+.light-info{
+  background-color: rgba($color: $info, $alpha: 0.2);
+  color: $info;
+  border: unset;
+  &:hover{
+    background-color: rgba($color: $info, $alpha: 0.3);
+    color: $info;
   }
 }

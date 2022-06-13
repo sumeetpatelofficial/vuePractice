@@ -1,29 +1,72 @@
 .form-group{
+    margin-bottom: 2.5rem;
     label{
-        color: #5B5D72;
-        font-size: 14px;
-        letter-spacing: 0.3px;
+        color: $lable;
+        @include font-size(15px);
+        letter-spacing: 0.5px;
         margin-bottom: 5px;
     }
 }
 
-@mixin placeholder {
-    &::-webkit-input-placeholder {@content};
-    &:-moz-placeholder           {@content};
-    &::-moz-placeholder          {@content};
-    &:-ms-input-placeholder      {@content} 
-}
-
 .form-control{
-    border-color: #D9DEE4;
+    border-color: $border;
     border-width:0.115rem;
-    height:calc(1.8em + 0.75rem + 5px);
+    height:calc(2em + 0.75rem + 5px);
     @include placeholder{
-        font-size: 14px;
-        color: #8B93A0;
+        @include font-size(14px);
+        color: $border;
     }
     &:focus, &:visited{
         box-shadow: unset;
-        border-color: #cacdd1;
+        border-color: $lable;
+    }
+}
+
+.button-radio{
+    position: relative;
+    display: flex;
+    .custom-radio{
+        width: calc(100% / 3 - 10px);
+        padding-left: 0;
+        label{
+            &::before, &::after{content:none;}
+            position: relative;
+            background-color: $white;
+            text-align: center;
+            border: 1px solid $border;
+            border-radius: 4px;
+            width: 100%;
+            padding:10px;
+            cursor: pointer;
+        }
+        &:last-child{
+            margin-right: 0;
+        }
+        .custom-control-input:checked ~ label.custom-control-label{
+            background-color: $info;
+            color: $white;
+            border-color: $info;
+        }
+    }
+}
+
+.Password{
+    max-width: 100% !important;    
+    .Password__group{
+        .Password__icons{
+            .Password__toggle{
+                button svg{
+                    fill: $border;
+                }
+            }
+        }
+    }
+    .Password__strength-meter{
+        max-width: 400px;
+        height: 5px;
+        border-radius: 0;
+        background: #F8F8F8;
+        margin-left: 0;
+        margin-right: 0;
     }
 }
