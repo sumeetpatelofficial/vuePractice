@@ -1,41 +1,33 @@
 <template>
-  <b-navbar class="header-navbar" toggleable="sm" :type="themeMode? 'dark':'light'" :variant="themeMode? 'dark':'light'">
-      <div class="container">
-        <b-navbar-brand href="#"><img :src="logoImage" alt="" srcset=""></b-navbar-brand>
-        
-        <div class="header-menu ml-auto">
-            <b-form-checkbox class="theme-switch" size="sm"
-                @change="changeThemeMode"
-                :title="themeMode ? 'Dark Mode':'Light Mode'"
-                v-model="themeMode">
-                <span class="material-icons">{{themeMode ? 'dark_mode':'light_mode'}}</span>                
-            </b-form-checkbox>
-            <b-link><span class="material-icons-outlined">notifications</span></b-link>
-            <b-link><span class="material-icons-outlined">email</span></b-link>
-            <b-link><b-avatar src="https://i.pravatar.cc/150?img=2"></b-avatar></b-link>
+     <header class="page-header">         
+        <div class="row align-items-center d-flex justify-content-between">
+            <div class="col-auto">
+            <h4 class="page-title">Dashboard</h4>
+            </div>
+            <div class="col text-right">                
+            <div class="d-flex justify-content-end">               
+                <button type="button" class="btn-link btn"><i class="zmdi icon-search"></i></button>
+                <button type="button" class="btn-link btn mr-3"><i class="zmdi icon-full-screen"></i></button>
+                <b-dropdown id="dropdown-1" right variant="link" toggle-class="text-decoration-none">
+                    <template #button-content>
+                        <img src="https://m.jagranjosh.com/imported/images/E/GK/Amitabh-Bachchan-Biography.jpg" alt="profile-img" class="rounded-circle mr-2"> <span class="loginUsername">Amitabh</span>
+                    </template>                    
+                </b-dropdown>                                                 
+            </div>
+            </div>
         </div>
-      </div>
-    </b-navbar>
+    </header>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-@Component
-export default class Header extends Vue {
-  profileName: any = "";
-  logoImage: any = require("@/assets/images/logo.svg");
+    import { Component, Vue } from 'vue-property-decorator';
 
-  themeMode:any=this.$store.state.currentTheme;  
-
-  mounted(){
-    document.documentElement.className = this.themeMode ? 'dark':'light';
-  }   
-
-  changeThemeMode(e:any){  
-    document.documentElement.className = e ? 'dark':'light';
-    this.$store.dispatch('changedTheme', e)
-  }
-}
+    @Component
+    export default class Header extends Vue {        
+        profileName:any="";       
+    }
 </script>
 
-<style scoped></style>
+<style scoped>
+
+</style>
