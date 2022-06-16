@@ -1,4 +1,7 @@
 .breadcrumb{
+    @include media-breakpoint-down(sm){
+        display: none;
+    }
     background-color: transparent;
     border-radius: unset;
     border-bottom: 1px solid $border;

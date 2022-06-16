@@ -1,5 +1,8 @@
 .form-group{
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
+    @include media-breakpoint-up(md){
+        margin-bottom: 2.5rem;
+    }
     label{
         color: $lable;
         @include font-size(15px);
@@ -12,6 +15,9 @@
     border-color: $border;
     border-width:0.115rem;
     height:calc(2em + 0.75rem + 5px);
+    color: $black;
+    letter-spacing: 0.3px;
+    font-weight: 400;
     @include placeholder{
         @include font-size(14px);
         color: $border;
@@ -19,6 +25,11 @@
     &:focus, &:visited{
         box-shadow: unset;
         border-color: $lable;
+    }
+    &[type="password"]{
+        @include placeholder{
+            @include font-size(18px);
+        }
     }
 }
 

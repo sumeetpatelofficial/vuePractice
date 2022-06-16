@@ -1,12 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import 'variables';
-@import 'mixin';
+// @import "node_modules/bootstrap/scss/mixins/hover";
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-vue/src/index.scss";
+@import 'mixin';
 @import "header";
 @import "breadscrumb";
 @import "contactcard";
 @import "form";
+@import "login";
 
 :root
 {
@@ -61,12 +63,14 @@
 html,body{
     height: 100%;
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--text-color);    
     transition:color var(--duration) var(--timing), background-color var(--duration) var(--timing);  
 }
 body{
   font-family: 'Rubik', sans-serif;
   color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a{
@@ -81,7 +85,8 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .page-area{
-  padding-top: 50px;
+  padding-top: 75px;
+  @include media-breakpoint-up(md){padding-top: 105px;}
 }
 
 .list-group-item{
@@ -110,7 +115,8 @@ h1, h2, h3, h4, h5, h6, p{
 }
 
 .form-div{
-  padding: 50px 0;
+  padding: 20px 0;
+  @include media-breakpoint-up(md){padding: 50px 0;}
 }
 
 .heading-section{
@@ -134,14 +140,4 @@ h1, h2, h3, h4, h5, h6, p{
 .card-light-gray{
   border: unset;
   background-color: rgba($color: $breadscrumb, $alpha: 0.15);
-}
-
-.light-info{
-  background-color: rgba($color: $info, $alpha: 0.2);
-  color: $info;
-  border: unset;
-  &:hover{
-    background-color: rgba($color: $info, $alpha: 0.3);
-    color: $info;
-  }
 }

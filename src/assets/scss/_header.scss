@@ -1,5 +1,13 @@
 .header-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
     border-bottom: 1px solid $border;
+    transition: transform 0.4s;
+    background-color: $white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
     .header-menu{
       display:flex;
       align-items: center;
@@ -61,3 +69,15 @@
       }
     }
   }
+
+  .scroll-down{
+    .header-navbar{                  
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+  .scroll-up {
+    .header-navbar{
+      transform: none;
+    }
+}

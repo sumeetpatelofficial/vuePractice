@@ -19,7 +19,7 @@
 
             <PersonaIInformation />
           </div>
-          <div class="offset-md-1 col-md-4">
+          <div class="offset-md-1 col-md-4" v-if="$screen.width > 768">
             <div class="card card-light-gray mb-5">
               <div class="card-body">
                 <h5 class="mb-3">Hi there, welcome here</h5>
@@ -31,15 +31,13 @@
               <img :src="userImage" alt="" srcset="">
               <div class="card-body">
                 <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-                <b-button class="light-info mt-5" block>Upload a Photo</b-button>
+                <b-button class="mt-5" variant="light-info" block>Upload a Photo</b-button>
               </div>
             </div>
           </div>
         </div>      
       </div>
     </b-container>
-
-
 
     <!-- <div class="container py-5">
       <b-button v-b-modal.modal-1 variant="primary" class="mb-3">New Use</b-button>
