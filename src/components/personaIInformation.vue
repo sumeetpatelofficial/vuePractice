@@ -1,5 +1,12 @@
 <template>
   <div>
+    <div class="heading-section">
+      <div class="heading-icon">
+        <img :src="componentValue.icon" alt="" srcset="">
+      </div>
+      <h5>{{componentValue.Name}}</h5>
+    </div>
+
     <form @submit.prevent.stop="saveUser">
       <div class="row">
         <div class="col-md-6">
@@ -70,7 +77,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue, Prop } from "vue-property-decorator";
 import Password from 'vue-password-strength-meter'
 @Component({
   components:{
@@ -78,6 +85,7 @@ import Password from 'vue-password-strength-meter'
   }
 })
 export default class personaIInformation extends Vue {
+  @Prop() componentValue:any;
   users: any = [];
   user: any = {
     firstName:"",

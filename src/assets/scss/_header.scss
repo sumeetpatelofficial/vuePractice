@@ -7,7 +7,7 @@
     border-bottom: 1px solid $border;
     transition: transform 0.4s;
     background-color: $white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.05);
     .header-menu{
       display:flex;
       align-items: center;

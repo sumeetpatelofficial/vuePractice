@@ -2,7 +2,7 @@
   <div>   
     <b-container>
       <b-breadcrumb>
-        <b-breadcrumb-item href="#foo" active>Personal Information</b-breadcrumb-item>
+        <b-breadcrumb-item v-for="item, i in userDetailComponents" :key="i" :active="isSelectedComponent[0].Name == item.Name">{{item.Name}}</b-breadcrumb-item>
       </b-breadcrumb>
     </b-container>
 
@@ -10,14 +10,9 @@
       <div class="form-div">
         <div class="row">
           <div class="col-md-7">
-            <div class="heading-section">
-              <div class="heading-icon">
-                <img :src="profileIcon" alt="" srcset="">
-              </div>
-              <h5>Personal Information</h5>
-            </div>
-
-            <PersonaIInformation />
+            <keep-alive>
+              <component :is="isSelectedComponent[0].component" :componentValue="isSelectedComponent[0]"></component>
+            </keep-alive>
           </div>
           <div class="offset-md-1 col-md-4" v-if="$screen.width > 768">
             <div class="card card-light-gray mb-5">
@@ -86,13 +81,31 @@
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import PersonaIInformation from "@/components/personaIInformation.vue";
+import addressInformation from "@/components/addressInformation.vue";
+import cardInformation from "@/components/cardInformation.vue";
 @Component({
   components:{
-    PersonaIInformation
+    PersonaIInformation,
+    addressInformation,
+    cardInformation
   }
 })
 export default class Home extends Vue {    
-  profileIcon:any=require("@/assets/images/profile.svg")
-  userImage:any=require("@/assets/images/userimage.jpg")
+  profileIcon:any=require("@/assets/images/profile.svg");
+  addressIcon:any=require("@/assets/images/address.svg");
+  cardIcon:any=require("@/assets/images/card.svg");
+  userImage:any=require("@/assets/images/userimage.jpg");
+
+
+  userDetailComponents:any=[
+    {id:1,Name:'Personal Information', component:'PersonaIInformation', icon:this.profileIcon, isActive:false, isCompleted:true},
+    {id:2,Name:'Address Information', component:'addressInformation', icon:this.addressIcon, isActive:false, isCompleted:true},
+    {id:3,Name:'Card Details', component:'cardInformation', icon:this.cardIcon, isActive:true, isCompleted:false},
+  ]
+
+  get isSelectedComponent(){
+    let component = this.userDetailComponents.filter((f) => f.isActive == true);    
+    return component;
+  }
 }
 </script>
