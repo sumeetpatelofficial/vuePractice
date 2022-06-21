@@ -69,7 +69,7 @@
       </div>
 
       <div class="mt-5">
-        <b-button variant="success">continue to address</b-button>
+        <b-button type="submit" variant="success">continue to address</b-button>
         <b-link class="text-light-gray ml-5">skip for now</b-link>
       </div>
     </form>
@@ -98,14 +98,6 @@ export default class personaIInformation extends Vue {
     password:"",
   };
 
-  foods: any = [
-    { text: "Select One", value: null },
-    "Carrots",
-    "Beans",
-    "Tomatoes",
-    "Corn",
-  ];
-
   mounted() {
     this.users = this.$store.state.user;
   }
@@ -113,6 +105,7 @@ export default class personaIInformation extends Vue {
   saveUser() {
     this.$store.dispatch("addNewUser", this.user);
     this.users = this.$store.state.user;
+    this.$emit('incrementComponent', this.componentValue)
   }
 
   changeChecked(index: any) {

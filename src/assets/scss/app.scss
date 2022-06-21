@@ -64,6 +64,7 @@ html,body{
     height: 100%;
     background-color: var(--bg-color);
     color: var(--text-color);    
+    font-weight: 400;
     transition:color var(--duration) var(--timing), background-color var(--duration) var(--timing);  
 }
 body{
@@ -71,6 +72,7 @@ body{
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
 }
 
 a{

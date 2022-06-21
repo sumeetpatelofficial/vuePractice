@@ -11,7 +11,11 @@
         <div class="row">
           <div class="col-md-7">
             <keep-alive>
-              <component :is="isSelectedComponent[0].component" :componentValue="isSelectedComponent[0]"></component>
+              <component
+                @incrementComponent="nextComponent"
+                :is="isSelectedComponent[0].component"
+                :componentValue="isSelectedComponent[0]">
+              </component>
             </keep-alive>
           </div>
           <div class="offset-md-1 col-md-4" v-if="$screen.width > 768">
@@ -83,29 +87,37 @@ import { Component, Vue } from "vue-property-decorator";
 import PersonaIInformation from "@/components/personaIInformation.vue";
 import addressInformation from "@/components/addressInformation.vue";
 import cardInformation from "@/components/cardInformation.vue";
+import uploadImage from "@/components/uploadImage.vue";
 @Component({
   components:{
     PersonaIInformation,
     addressInformation,
-    cardInformation
+    cardInformation,
+    uploadImage
   }
 })
 export default class Home extends Vue {    
   profileIcon:any=require("@/assets/images/profile.svg");
   addressIcon:any=require("@/assets/images/address.svg");
   cardIcon:any=require("@/assets/images/card.svg");
+  imageIcon:any=require("@/assets/images/profileImg.svg");
   userImage:any=require("@/assets/images/userimage.jpg");
 
 
   userDetailComponents:any=[
-    {id:1,Name:'Personal Information', component:'PersonaIInformation', icon:this.profileIcon, isActive:false, isCompleted:true},
-    {id:2,Name:'Address Information', component:'addressInformation', icon:this.addressIcon, isActive:false, isCompleted:true},
-    {id:3,Name:'Card Details', component:'cardInformation', icon:this.cardIcon, isActive:true, isCompleted:false},
+    {id:1,Name:'Personal Information', component:'PersonaIInformation', icon:this.profileIcon, isActive:true, isCompleted:true},
+    {id:2,Name:'Address Information', component:'addressInformation', icon:this.addressIcon, isActive:false, isCompleted:false},
+    {id:3,Name:'Card Details', component:'cardInformation', icon:this.cardIcon, isActive:false, isCompleted:false},
+    {id:4,Name:'Upload Profile Image', component:'uploadImage', icon:this.imageIcon, isActive:false, isCompleted:false},
   ]
 
   get isSelectedComponent(){
     let component = this.userDetailComponents.filter((f) => f.isActive == true);    
     return component;
+  }
+
+  nextComponent(value){
+    value.isActive = false;
   }
 }
 </script>

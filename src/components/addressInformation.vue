@@ -7,7 +7,7 @@
       <h5>{{ componentValue.Name }}</h5>
     </div>
 
-    <form @submit.prevent.stop="saveUser">
+    <form>
       <div class="row">
         <div class="col-md-12">
           <div class="form-group">
