@@ -1,21 +1,12 @@
 <template>
-  <div id="app">  
-    <Header />
-    <div class="page-area">
-      <router-view />
-    </div>
+  <div id="app">      
+      <router-view />    
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import Header from "@/components/Header.vue";
-
-@Component({
-  components:{
-    Header
-  }
-})
+@Component
 export default class App extends Vue {
   
 }

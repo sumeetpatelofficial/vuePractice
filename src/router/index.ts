@@ -1,20 +1,19 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
-import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/login",
+    name: "login",
+    component:() => import('@/views/Login.vue'),
   },
   {
-    path: "/js",
-    name: "js",
-    component:() => import('@/views/jsPractice.vue'),
-  },
+    path: "/",
+    name: "user-landign",
+    component:() => import('@/views/landingUser.vue')
+  },  
 ];
 
 const router = new VueRouter({

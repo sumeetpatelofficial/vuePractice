@@ -1,5 +1,8 @@
 .form-group{
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.8rem;
+    @include media-breakpoint-up(md){
+        margin-bottom: 2.5rem;
+    }
     label{
         color: $lable;
         @include font-size(15px);
@@ -12,13 +15,21 @@
     border-color: $border;
     border-width:0.115rem;
     height:calc(2em + 0.75rem + 5px);
+    color: $black;
+    letter-spacing: 0.3px;
+    font-weight: 400;
     @include placeholder{
         @include font-size(14px);
         color: $border;
     }
     &:focus, &:visited{
         box-shadow: unset;
-        border-color: $lable;
+        border-color: rgba($lable, 0.5);
+    }
+    &[type="password"]{
+        @include placeholder{
+            @include font-size(18px);
+        }
     }
 }
 
@@ -68,5 +79,180 @@
         background: #F8F8F8;
         margin-left: 0;
         margin-right: 0;
+    }
+}
+
+.credit-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgb(123,135,255);
+    background: linear-gradient(90deg,rgba(123,135,255,1) 0%, rgba(47,57,163,1) 100%);
+    border-radius: 6px;
+    overflow: hidden;
+    padding: 20px;
+    padding-top: 40px;
+    min-height: 240px;
+    margin-bottom: 60px;
+    box-shadow: 0px 15px 30px rgba(89, 99, 199, 0.32);
+    &-name{
+        position: relative;
+        margin-bottom: 10px;
+        h4{
+            text-transform: uppercase;
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 2px;
+            @include font-size(16px);
+            color:$white;
+        }
+    }
+    &-number{
+        position: relative;
+        h3{
+            margin: 0;
+            font-weight: 500;
+            letter-spacing: 4px;
+            @include font-size(20px);
+            color:$white;
+        }
+    }
+    &-more-details{
+        position: relative;
+        margin-top: auto;
+        display: flex;
+        .expiry-date, .cvv-number{
+            position: relative;
+            margin-right: 30px;
+            p{
+                margin-bottom: 3px;
+                color: $white;
+                @include font-size(14px);
+                letter-spacing: 1px;                
+            }
+            span{
+                color: $white;
+                @include font-size(16px);
+            }
+        }
+    }
+
+    &::after, &::before{
+        position: absolute;
+        content: '';
+        display: block;
+        background: transparent;
+        border: 1px solid rgba($color: $white, $alpha: 0.15);   
+        border-radius: 50%;  
+        z-index: 0;   
+    }
+
+    &::before{
+        width: 380px;
+        height: 380px;
+        top: 45%;
+        left: -30%;
+    }
+    &::after{
+        width: 250px;
+        height: 250px;
+        top: 60%;
+        right: -10%;
+    }
+}
+
+.custom-image-upload{
+    position: relative;        
+    input[type="file"]{
+        position: absolute;
+        opacity: 0;
+        left: 0;
+        top: 0;
+        height: 150px;
+        margin: 0 !important;
+        width: 150px;
+        cursor: pointer; 
+        z-index: 2;        
+    }
+    .upload-text{
+        display: block;
+        color: $breadscrumb;
+        margin-top: 10px;
+        letter-spacing:1px;
+    }
+}
+
+.image-upload-button{
+    position: relative;
+    display: block;    
+    width: 150px;
+    height: 150px;
+    overflow: hidden;   
+    .square, .circle, .diagonal{
+        position:absolute;
+        border: 1px solid $border;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 4px;
+        z-index: 1;
+    }
+    .circle{
+        border-radius: 50%;
+    }
+    .diagonal{
+        width: 210px;
+        height: 210px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-color:transparent;
+        z-index: 0;
+        &::after, &::before{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 50%;
+            right: 0;
+            bottom: 0;
+            width: 1px;
+            height: 100%;
+            background: $border;
+            transform:rotate(45deg);
+            transform-origin: center;
+        }
+
+        &::before{
+            transform: rotate(-45deg);
+        }
+    }    
+}
+
+.profile-image-preview{
+    position: relative;
+    display: block;
+    width: 150px;
+    .image-preview{    
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        @include aspect-ratio(1,1);
+        box-shadow: 0px 0px 20px rgba(168, 168, 168, 0.32);
+    }
+    a.remove-image{
+        position: absolute;
+        top: 0;
+        right: 15px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: $red;        
+        text-align: center;
+        span{
+            color: $white;
+            line-height: 30px;
+        }
     }
 }

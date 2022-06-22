@@ -15,7 +15,7 @@ export default new Vuex.Store({
     },
     changeStatus(state:any, index){
       // console.log(state.checked[index])
-      //vue.set(object, index, newValue)
+      //vue.set(object/array, index, newValue)
       Vue.set(state.user, state.user[index], !state.user[index].checked)
     },
     changedThemeMutation(state:any, value){

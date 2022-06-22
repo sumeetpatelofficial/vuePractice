@@ -5,7 +5,7 @@
 }
   
 @mixin font-size($size) {
-  font-size: $size;
+  // font-size: $size;
   font-size: calculateRem($size);
 }
   
@@ -36,5 +36,55 @@
       width: 100%;
       transition: all ease-in-out 0.3s;
     }
+  }
+}
+
+
+//mixin for light color's buttons
+@mixin button-light-variant($color, $color-hover: color-yiq($color), $active-background: $color, $active-border: $color) {
+  color: $color;
+  border-color: $color;
+  background-color: rgba($color: $color, $alpha: .2);
+  @include hover() {
+    color: $color-hover;
+    background-color: $active-background;
+    border-color: $active-border;
+  }
+
+  &:focus,
+  &.focus {
+    @include hover() {
+      color: $color-hover;
+      background-color: $active-background;
+      border-color: $active-border;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $color;
+    background-color: transparent;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  .show > &.dropdown-toggle {
+    color: color-yiq($active-background);
+    background-color: $active-background;
+    border-color: $active-border;
+
+    &:focus {
+      @include hover() {
+        color: $color-hover;
+        background-color: $active-background;
+        border-color: $active-border;
+      }
+    }
+  }
+}
+
+@each $color, $value in $theme-colors {
+  .btn-light-#{$color} {
+    @include button-light-variant($value);
   }
 }
