@@ -1,8 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
 @import 'variables';
+// @import "node_modules/bootstrap/scss/mixins/hover";
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "node_modules/bootstrap-vue/src/index.scss";
-// @import "contactcard";
+@import 'mixin';
+@import "header";
+@import "breadscrumb";
+@import "contactcard";
+@import "form";
+@import "login";
 
 :root
 {
@@ -35,8 +41,8 @@
 }
 
 :root.light{
-  --bg-theme:#ffffff;
-  --bg-color:#FAFCFD;
+  --bg-theme:$white;
+  --bg-color:$white;
   --text-color:#222222;
   --duration: 0.5s;
   --timing: ease; 
@@ -46,7 +52,7 @@
 
 :root.dark{
   --bg-theme:#3C415C;
-  --bg-color:#040303;
+  --bg-color:#1A2029;
   --text-color:#ffffff;
   --duration: 0.5s;
   --timing: ease;  
@@ -57,12 +63,32 @@
 html,body{
     height: 100%;
     background-color: var(--bg-color);
-    color: var(--text-color);
+    color: var(--text-color);    
+    font-weight: 400;
     transition:color var(--duration) var(--timing), background-color var(--duration) var(--timing);  
 }
 body{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Rubik', sans-serif;
   color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+a{
+  text-decoration: none;
+  &:hover, &:focus{
+    text-decoration: none;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, p{
+  color: $lable;
+}
+
+.page-area{
+  padding-top: 75px;
+  @include media-breakpoint-up(md){padding-top: 105px;}
 }
 
 .list-group-item{
@@ -70,9 +96,8 @@ body{
   color: var(--text-color);
 }
 
-.btn-primary{
-  background-color: var(--btn-background);  
-  color: var(--btn-text);
+.btn{
+  padding: 0.75rem 1.5rem;
 }
 
 .user-type{
@@ -84,32 +109,37 @@ body{
   letter-spacing: 0.5px;
 }
 
-@mixin aspect-ratio($width, $height) {
-  position: relative;
-  &:before {
-    display: block;
-    content: "";
-    width: 100%;
-    padding-top: ($height / $width) * 100%;
-  }
-  > .content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-      transition: all ease-in-out 0.3s;
-    }
-  }
-}
-
 .contact-card{
   &-image{
     @include aspect-ratio(1, 1); 
     overflow: hidden;   
   }
+}
+
+.form-div{
+  padding: 20px 0;
+  @include media-breakpoint-up(md){padding: 50px 0;}
+}
+
+.heading-section{
+  position: relative;
+  margin-bottom: 50px;
+  .heading-icon{
+    position: relative;
+    margin-bottom: 20px;
+    img{
+      width: 40px;
+    }
+  }
+  h5{
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    font-weight: 400;
+    @include font-size(22px);
+  }
+}
+
+.card-light-gray{
+  border: unset;
+  background-color: rgba($color: $breadscrumb, $alpha: 0.15);
 }

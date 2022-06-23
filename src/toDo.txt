@@ -1,0 +1,26 @@
+User Details
+    ---- Personal Details
+        ---- First Name + Last Name
+        ---- Email
+        ---- Phone
+        ---- Gender
+        ---- Password
+        ---- Type
+        ---- Is Active
+        ---- User Image
+    ---- Address
+        ---- line1 + line2
+        ---- City
+        ---- State
+        ---- Country
+    ---- Card Details
+        ---- 16 digit number
+        ---- CVV
+        ---- Name
+        ---- Type
+
+User Transaction
+    ---- Debit Transaction
+    ---- Credit Transaction
+    ---- Reverted Transaction
+    ---- Cashback Transaction (Credit)
