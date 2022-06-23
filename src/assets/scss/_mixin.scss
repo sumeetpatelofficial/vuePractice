@@ -45,7 +45,7 @@
   color: $color;
   border-color: $color;
   background-color: rgba($color: $color, $alpha: .2);
-  @include hover() {
+  &:hover {
     color: $color-hover;
     background-color: $active-background;
     border-color: $active-border;
@@ -53,11 +53,9 @@
 
   &:focus,
   &.focus {
-    @include hover() {
       color: $color-hover;
       background-color: $active-background;
       border-color: $active-border;
-    }
   }
 
   &.disabled,
@@ -74,11 +72,9 @@
     border-color: $active-border;
 
     &:focus {
-      @include hover() {
         color: $color-hover;
         background-color: $active-background;
         border-color: $active-border;
-      }
     }
   }
 }
