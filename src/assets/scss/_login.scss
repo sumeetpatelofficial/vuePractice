@@ -36,29 +36,28 @@
             z-index: 1;
             .form-group{
                 position: relative;
-                padding-left: 30px;
-                padding-right: 30px;
+                padding-left: 0;
+                padding-right: 0;
                 margin-bottom: 2rem;                
                 &:last-child{
                     margin-bottom: 0;
                 }
                 label{
+                    padding-left: 30px;
+                    padding-right: 30px;
                     margin: 0;
                 }
                 .form-control{
                     border: unset;
-                    padding:0;
+                    padding:0 30px;
                     height: calc(2em + 0.75rem);
                     background-color: transparent;
-                }
-                &::after{
-                    position: absolute;
-                    content:'';
                     border-bottom:1px solid $border;
-                    width: 100%;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
+                    border-radius: unset;
+                }
+                .invalid-feedback{
+                    padding-left: 30px;
+                    padding-right: 30px;
                 }
             }
         }
