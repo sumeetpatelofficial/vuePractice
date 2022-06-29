@@ -5,12 +5,12 @@ Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/login",
+    path: "/",
     name: "login",
     component:() => import('@/views/Login.vue'),
   },
   {
-    path: "/",
+    path: "/user",
     name: "user-landign",
     component:() => import('@/views/landingUser.vue')
   },  
