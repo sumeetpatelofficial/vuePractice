@@ -1,5 +1,6 @@
 <template>
   <b-form novalidate @submit.stop.prevent="checkLogin">
+    <vue-progress-bar></vue-progress-bar>
     <div class="login-page">
       <div class="login-card">
         <div class="login-card-header">
@@ -18,8 +19,9 @@
               :state="validateState('email')"
               v-model="user.email"
             ></b-form-input>
-            <b-form-invalid-feedback id="input-1-live-feedback">{{veeErrors.first("email")}}</b-form-invalid-feedback>
-            <!-- <span v-if="errors.has('email')" class="text-danger">Please enter username</span> -->
+            <b-form-invalid-feedback id="input-1-live-feedback">{{
+              veeErrors.first("email")
+            }}</b-form-invalid-feedback>
           </div>
           <div class="form-group">
             <label for="">Password</label>
@@ -29,13 +31,19 @@
               name="password"
               placeholder="**********"
               v-model="user.password"
+              :state="validateState('password')"
               v-validate="'required'"
             ></b-form-input>
-            <!-- <span v-if="errors.has('password')" class="text-danger">Please enter password</span> -->
+            <b-form-invalid-feedback id="input-1-live-feedback">{{
+              veeErrors.first("password")
+            }}</b-form-invalid-feedback>
           </div>
         </div>
         <div class="login-card-footer">
-          <b-button type="submit" variant="primary" block>Sign in</b-button>
+          <b-button type="submit" variant="primary" block>
+            <b-spinner v-if="showLoading" small variant="light"></b-spinner>
+            Sign in</b-button
+          >
           <p>Now have an account yet <b-link>sign up</b-link></p>
         </div>
       </div>
@@ -52,30 +60,36 @@ export default class Login extends Vue {
     email: "",
     password: "",
   };
+  showLoading: any = false;
+  veeFields: any;
+  veeErrors: any;
 
-  veeFields:any;
-  veeErrors:any;
-
-  validateState(ref:any) {
-    if ( this.veeFields[ref] && (this.veeFields[ref].dirty || this.veeFields[ref].validated)) {
-        return !this.veeErrors.has(ref);
-      }
-      return null;
+  validateState(ref: any) {
+    if (
+      this.veeFields[ref] &&
+      (this.veeFields[ref].dirty || this.veeFields[ref].validated)
+    ) {
+      return !this.veeErrors.has(ref);
+    }
+    return null;
   }
 
   checkLogin() {
     const email = "admin@abc.com";
-    const pass = "12345678";
-
+    const pass = "1234";
     this.$validator.validateAll().then((result) => {
       if (result) {
-        if (this.user.email == email && this.user.password == pass) {
-          this.$router.push("/user");
-        } else {
-          console.log("wrong username or password");
-        }
+        this.showLoading = true;        
+        setTimeout(() => {
+          if (this.user.email == email && this.user.password == pass) {
+            this.$router.push("/user");
+          } else {
+            console.log("wrong username or password");
+          }
+          this.showLoading = false;
+        }, 2000);
       }
-    });
+    });    
   }
 }
 </script>

@@ -54,6 +54,18 @@
                     background-color: transparent;
                     border-bottom:1px solid $border;
                     border-radius: unset;
+                    &.is-invalid{
+                        border-color: $danger;
+                        &:focus{
+                            box-shadow: unset;
+                        }
+                    }
+                    &.is-valid{
+                        border-color: $success;
+                        &:focus{
+                            box-shadow: unset;
+                        }
+                    }
                 }
                 .invalid-feedback{
                     padding-left: 30px;
