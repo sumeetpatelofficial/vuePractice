@@ -1,6 +1,5 @@
 <template>
   <b-form novalidate @submit.stop.prevent="checkLogin">
-    <vue-progress-bar></vue-progress-bar>
     <div class="login-page">
       <div class="login-card">
         <div class="login-card-header">

@@ -2,7 +2,7 @@
   <div>
     <Header />
     <div class="page-area">
-        <Home />
+      <Home />
     </div>
   </div>
 </template>

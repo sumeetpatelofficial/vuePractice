@@ -49,48 +49,6 @@
         </div>
       </div>
     </b-container>
-
-    <!-- <div class="container py-5">
-      <b-button v-b-modal.modal-1 variant="primary" class="mb-3">New Use</b-button>
-      <b-list-group>
-        <template v-if="users.length">
-          <b-list-group-item
-            v-for="user, i in users" :key="i">
-            <div class="row d-flex align-items-center">
-              <div class="col-auto">
-                <b-form-checkbox
-                  id="checkbox-1"
-                  v-model="user.checked"
-                  name="checkbox-1"
-                  @change="changeChecked(i)"
-                >
-                </b-form-checkbox>
-              </div>
-              <div class="col-auto">
-                <b-avatar></b-avatar>
-              </div>
-              <div class="col">
-                <span :style="user.checked?'text-decoration:line-through':null" :class="{'font-italic':user.checked}">
-                {{user.name}}
-                </span>
-              </div>
-            </div>                        
-          </b-list-group-item>
-        </template>
-        <template v-else>
-          <b-list-group-item>No Users Found !!</b-list-group-item>
-        </template>
-      </b-list-group>
-    </div>
-
-    <div class="container">
-      <h5 class="user-type">Suggestion Invitations</h5>
-      <div class="row">
-        <div class="col-6">
-          <contact-card />
-        </div>
-      </div>      
-    </div> -->
   </div>
 </template>
 
