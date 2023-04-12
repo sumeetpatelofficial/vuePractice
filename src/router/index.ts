@@ -18,8 +18,6 @@ const routGuard = (to, from, next) => {
   }
 }
 
-
-
 const routes: Array<RouteConfig> = [
   {
     path: "/login",
