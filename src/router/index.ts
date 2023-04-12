@@ -12,15 +12,15 @@ const routGuard = (to, from, next) => {
   else isAuthenticated = false;
 
   if (isAuthenticated) {
-    next("/"); // allow to enter route
+    next("/user"); // allow to enter route
   } else {
-    next("/login"); // go to '/login';
+    next("/"); // go to '/login';
   }
 }
 
 const routes: Array<RouteConfig> = [
   {
-    path: "/login",
+    path: "/",
     name: "login",
     component: () => import("@/views/Login.vue"),
   },
