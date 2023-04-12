@@ -58,6 +58,7 @@ export default class Login extends Vue {
   user: any = {
     email: "",
     password: "",
+    loginStatus:false
   };
   showLoading: any = false;
   veeFields: any;
@@ -81,7 +82,14 @@ export default class Login extends Vue {
         this.showLoading = true;        
         setTimeout(() => {
           if (this.user.email == email && this.user.password == pass) {
-            this.$router.push("/user");
+            let user = {
+              Username:this.user.email,
+              password:this.user.password,
+              loginStatus:true
+            }
+            this.$store.dispatch('LoggedInUser', user)
+            // localStorage.setItem('LoggedUser',JSON.stringify(user));
+            this.$router.push("/");
           } else {
             console.log("wrong username or password");
           }
@@ -89,6 +97,17 @@ export default class Login extends Vue {
         }, 2000);
       }
     });    
+  }
+
+  mounted(){
+    this.user ={
+      email: "",
+      password: "",
+      loginStatus:false
+    };
+    this.$store.dispatch('LoggedInUser', this.user)
+    this.$store.dispatch('addNewUser', null);
+    this.$store.dispatch('updatedCurrentStep',null)
   }
 }
 </script>

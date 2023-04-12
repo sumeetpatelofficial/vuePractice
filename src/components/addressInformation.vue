@@ -15,6 +15,7 @@
             <b-form-input
               id="input-1"
               placeholder="Enter Address Line 1"
+              v-model="addressInfo.addressLine1"
             ></b-form-input>
           </div>
         </div>
@@ -24,6 +25,7 @@
             <b-form-input
               id="input-1"
               placeholder="Enter Address Line 2"
+              v-model="addressInfo.addressLine2"
             ></b-form-input>
           </div>
         </div>
@@ -33,6 +35,7 @@
             <b-form-input
               id="input-1"
               placeholder="Enter City"
+              v-model="addressInfo.city"
             ></b-form-input>
           </div>
         </div>
@@ -42,6 +45,7 @@
             <b-form-input
               id="input-1"
               placeholder="Enter State"
+              v-model="addressInfo.state"
             ></b-form-input>
           </div>
         </div>
@@ -51,6 +55,7 @@
             <b-form-input
               id="input-1"
               placeholder="Enter Country"
+              v-model="addressInfo.country"
             ></b-form-input>
           </div>
         </div>
@@ -69,8 +74,22 @@ import { Component, Vue, Prop } from "vue-property-decorator";
 @Component
 export default class addressInformation extends Vue {
     @Prop() componentValue:any;
+    user:any='';
+    addressInfo:any={
+      addressLine1:'201-Sangee flats',
+      addressLine2:'raghukul char rasta',
+      city:'Vadodara',
+      state:'Gujarat',
+      country:'India'
+    }
+
+    mounted(){
+      this.user = this.$store.state.user;
+    }
 
     saveAddress(){
+      this.$set(this.user, 'addressInformation', this.addressInfo)
+      this.$store.dispatch("addNewUser", this.user);
       this.$emit('incrementComponent', this.componentValue)
     }
 }

@@ -1,13 +1,12 @@
 <template>
-  <div>
+  <div class="container">
     <p>MAP : {{ mappedArray }}</p>
     <p>MAP : {{ squaredValue }}</p>
     <p>Filter : {{ oddNumber }}</p>
     <p>Filter : {{ eventNumber }}</p>
     <p>Reduced : {{ reducedSum }}</p>
-    <p>
-      <code>{{ loopedData }}</code>
-    </p>
+    <p>Sperad : {{spearOpr}}</p>
+    <p><code>{{ loopedData }}</code></p>
   </div>
 </template>
 
@@ -26,7 +25,9 @@ export default class jsPractice extends Vue {
 
   reducedSum: any = this.sampleArray.reduce((result: any, num: any) => {
     return (result += num);
-  });
+  }, 0);
+
+  spearOpr: any = {...this.mappedArray}
 
   dummyData: any = [
     {
