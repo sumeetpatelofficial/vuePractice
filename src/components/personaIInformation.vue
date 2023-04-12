@@ -84,7 +84,7 @@
               v-model="user.gender"
               class="button-radio">
               <b-form-radio 
-                v-for="gender, g in ['Male', 'Female', 'Others']"
+                v-for="(gender, g) in ['Male', 'Female', 'Others']"
                 :key="g"
                 :value="gender"
                 name="radio_group_gender"
@@ -92,7 +92,6 @@
             </b-form-radio-group>
           </div>
         </div>
-
         <div class="col-md-12">
           <div class="form-group">
             <label for="">Password</label>            
@@ -124,14 +123,17 @@ export default class personaIInformation extends Vue {
   @Prop() componentValue:any;
   users: any = [];
   user: any = {
-    firstName:"",
-    lastName:"",
-    email: "",
-    contact: "",
+    firstName:"Sumeet",
+    lastName:"Patel",
+    email: "abc@def.com",
+    contact: "7383128210",
     gender: "Male",
     isActive: true,
     type:"user",
-    password:"",
+    password:"Sam@12108",
+    addressInformation:[],
+    cardDetails:[],
+    userImage:null
   };
   enableButton:any=false;
   veeFields: any;
@@ -148,15 +150,15 @@ export default class personaIInformation extends Vue {
   }
 
   mounted() {
-    this.users = this.$store.state.user;
+    // this.users = this.$store.state.user;
   }
 
   saveUser() {
     this.$validator.validateAll().then((result) => {
       if (result) {
-        this.enableButton = true;
+        this.enableButton = true;        
+        // this.users = this.$store.state.user;
         this.$store.dispatch("addNewUser", this.user);
-        this.users = this.$store.state.user;
         this.$emit('incrementComponent', this.componentValue)
       }
     })    

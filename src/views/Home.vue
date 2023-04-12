@@ -2,7 +2,12 @@
   <div>
     <b-container>
       <b-breadcrumb>
-        <b-breadcrumb-item v-for="(item, i) in breadscrumbComponent" :key="i" :active="isCurrentComponent.Name == item.Name">
+        <b-breadcrumb-item
+          v-for="(item, i) in breadscrumbComponent"
+          :key="i"
+          :active="isCurrentComponent.Name == item.Name"
+          @click="activeComponent(item)"
+          >
           {{ item.Name }}
         </b-breadcrumb-item>
       </b-breadcrumb>
@@ -111,8 +116,13 @@ export default class Home extends Vue {
     },
   ];
 
-  mounted() {
-    this.isCurrentComponent = this.userDetailComponents[0]; 
+  created(){
+    this.$store.state.currentStep == null ? 
+    this.isCurrentComponent = this.userDetailComponents[0] : this.isCurrentComponent = this.$store.state.currentStep
+  }
+
+  mounted() {    
+    this.$store.dispatch('updatedCurrentStep',this.isCurrentComponent)
     this.breadscrumbComponent = this.userDetailComponents.filter((b) => b.isCompleted == true); 
   }
 
@@ -122,7 +132,13 @@ export default class Home extends Vue {
     Vue.set(this.userDetailComponents[index + 1], "isActive", true);
     Vue.set(this.userDetailComponents[index + 1], "isCompleted", true);
     this.isCurrentComponent = this.userDetailComponents[index + 1];
+    this.$store.dispatch('updatedCurrentStep',this.isCurrentComponent)
     this.breadscrumbComponent = this.userDetailComponents.filter((b) => b.isCompleted == true);
+  }
+
+  activeComponent(clickedComponent){
+    this.isCurrentComponent = clickedComponent;
+    this.$store.dispatch('updatedCurrentStep',this.isCurrentComponent)
   }
 }
 </script>

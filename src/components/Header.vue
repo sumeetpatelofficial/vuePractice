@@ -12,6 +12,7 @@
             </b-form-checkbox>
             <b-link><span class="material-icons-outlined">notifications</span></b-link>
             <b-link><span class="material-icons-outlined">email</span></b-link>
+            <b-link @click="logout()"><span class="material-icons-outlined">logout</span></b-link>
             <b-link><b-avatar src="https://i.pravatar.cc/150?img=2"></b-avatar></b-link>
         </div>
       </div>
@@ -37,6 +38,10 @@ export default class Header extends Vue {
     this.$store.dispatch('changedTheme', e)
   }
 
+  logout(){
+    this.$store.dispatch('LoggedInUser', null);    
+    this.$router.push("/login");
+  }
 
   stickyHeader(){
     const body = document.body;
