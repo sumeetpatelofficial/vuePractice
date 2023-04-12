@@ -89,7 +89,7 @@ export default class Login extends Vue {
             }
             this.$store.dispatch('LoggedInUser', user)
             // localStorage.setItem('LoggedUser',JSON.stringify(user));
-            this.$router.push("/");
+            this.$router.push("/user");
           } else {
             console.log("wrong username or password");
           }
